@@ -71,7 +71,7 @@ let fileUrl = Bundle.main.url(forResource: "somefile", withExtension: "txt12")!
 //: Before running this, you need a to create a "Shared Playground Data" folder to your ~/Documents directory
 do {
     print("uuu : \(url)")
-    try writeToFiles(data: [url: "Hello there1"])
+    try writeToFiles(data: [url: "Hello there13"])
 } catch {
     print(error)
 }
