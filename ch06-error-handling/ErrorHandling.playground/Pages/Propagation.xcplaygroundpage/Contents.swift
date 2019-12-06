@@ -33,7 +33,7 @@ extension ParseRecipeError: LocalizedError {
     
     var failureReason: String? {
         switch self {
-        case let .parseError(line: line, symbol: symbol):
+        case .parseError(line: let line, symbol: let symbol):
             return String(format: NSLocalizedString("Parsing data failed at line: %i and symbol: %@",
                                                     comment: "Parsing error line symbol"), line, symbol)
         case .noIngredientsDetected:
@@ -66,8 +66,8 @@ extension ParseRecipeError: CustomNSError {
 }
 
 let nsError: NSError = ParseRecipeError.parseError(line: 3, symbol: "#") as NSError
-print(nsError)
-
+//print(nsError)
+//print("abcde")
 
 import UIKit
 
@@ -78,10 +78,25 @@ struct ErrorHandler {
     let genericMessage = "Sorry! Something went wrong"
     
     func handleError(_ error: Error) {
-        presentToUser(message: genericMessage)
+//        print(String(format: "error is : %@", error.localizedDescription))
+        
+        if error is ParseRecipeError {
+            if let errorDescription = (error as! ParseRecipeError).errorDescription {
+                presentToUser(message: errorDescription)
+            } else {
+                presentToUser(message: genericMessage)
+            }
+        } else {
+            presentToUser(message: genericMessage)
+        }
+        
+
     }
     
     func handleError(_ error: LocalizedError) {
+        
+        print("ninini")
+        
         if let errorDescription = error.errorDescription {
             presentToUser(message: errorDescription)
         } else {
@@ -92,6 +107,7 @@ struct ErrorHandler {
     func presentToUser(message: String) {
         // Show alert dialog in iOS or OSX
         // ... snip
+        print("error : \(message)")
     }
     
 }
@@ -134,8 +150,10 @@ let recipeExtractor = RecipeExtractor(html: html)
 
 do {
     let recipe = try recipeExtractor.extractRecipe()
-} catch  {
+    print("check 1")
+} catch {
     ErrorHandler.default.handleError(error)
-}
+    print("check 2")
+} 
 
 //: [Table of contents](Table%20of%20contents) - [Previous page](@previous) - [Next page](@next)

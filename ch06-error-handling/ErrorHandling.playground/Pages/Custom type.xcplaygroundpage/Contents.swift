@@ -20,11 +20,13 @@ func validatePhoneNumber(_ text: String) throws {
 }
 
 do {
-    try validatePhoneNumber("(123) 123-1234")
+    try! validatePhoneNumber("(123) 123-1234")
     print("Phonenumber is valid")
 } catch {
     print(error)
 }
+
+
 
 struct PhoneNumber {
     

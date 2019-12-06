@@ -58,17 +58,20 @@ func writeToFiles(data: [URL: String]) throws {
         }
     }
     
+    print(type(of: data))
+    
     for (url, contents) in data {
         try contents.write(to: url, atomically: true, encoding: String.Encoding.utf8)
         storedUrls.append(url)
     }
 }
 
-let url = playgroundSharedDataDirectory.appendingPathComponent("somefile.txt")
-
+let url = playgroundSharedDataDirectory.appendingPathComponent("somefile.txt", isDirectory: false)
+let fileUrl = Bundle.main.url(forResource: "somefile", withExtension: "txt")!
 //: Before running this, you need a to create a "Shared Playground Data" folder to your ~/Documents directory
 do {
-    try writeToFiles(data: [url: "Hello there"])
+    print("uuu : \(url)")
+    try writeToFiles(data: [url: "Hello there1"])
 } catch {
     print(error)
 }
