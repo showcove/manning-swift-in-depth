@@ -21,7 +21,7 @@ extension ParseRecipeError: LocalizedError {
         switch self {
         case .parseError:
             return NSLocalizedString("The HTML file had unexpected symbols.a",
-                                     comment: "Parsing error reason unexpected symbols")
+                                     comment: "Parsing error reason unexpected symbols1")
         case .noIngredientsDetected:
             return NSLocalizedString("No ingredients were detected.",
                                      comment: "Parsing error no ingredients.")
