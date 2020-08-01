@@ -5,8 +5,8 @@
         <page name='Errors'/>
         <page name='Keeping predictable state'/>
         <page name='Propagation'/>
-        <page name='Delivering pleasant APIs'/>
-        <page name='Custom type'/>
+        <page name='Capturing validity within a type'/>
+        <page name='Optionals'/>
         <page name='Exercises'/>
     </pages>
 </playground>

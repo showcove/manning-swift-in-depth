@@ -150,8 +150,8 @@ let recipeExtractor = RecipeExtractor(html: html)
 
 do {
     let recipe = try recipeExtractor.extractRecipe()
-    print("check 1")
-} catch {
+    print(recipe)
+} catch  {
     ErrorHandler.default.handleError(error)
     print("check 2")
 } 
